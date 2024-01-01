@@ -3,20 +3,7 @@
 
 <template>
   <main>
-    <div class="top">
-      <span>Recodings</span>
-      <div class="title">
-        <div class="record">
-          <h4>Total recordings 0</h4>
-        </div>
-        <div>
-          <button class="btn btn-outline">By Date</button>
-          <button class="btn btn-outline">Add Filter</button>
-          <button class="btn btn-blue">New Request</button>
-        <button class="btn btn-red">Start Recording</button>
-        </div>
-      </div>
-    </div>
+    
     <section class="section1">
       <div class="img">
         <img src="../assets/home/file.png" alt="" />
@@ -49,33 +36,7 @@
 
 main {
   
-  .top{
-    margin-left:1rem;
-    span{
-      margin-left:12.5rem;
-    }
-
-    .record{
-      text-align: center
-    }
-    .title {
-      .dflex-center();
-      justify-content: space-between;
-      div {
-        width:37vw;
-        .dflex-center();
-        gap:1rem;
-        .btn-red {
-          width:10rem;
-        }
-
-        .btn-blue {
-          width:9rem;
-        }
-
-      }
-    }
-  }
+  
 
   .section1 {
     margin: 1.4rem 0;

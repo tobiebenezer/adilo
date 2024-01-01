@@ -11,12 +11,12 @@ const router = createRouter({
       meta: { layout: TheSideBar },
       component: HomeView
     },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   meta: { layout: TheSideBar },
-    //   component: () => import('../views/AboutView.vue')
-    // }
+    {
+      path: '/recentrecording',
+      name: 'showRecoding',
+      meta: { layout: TheSideBar },
+      component: () => import('../views/ShowRecordingView.vue')
+    }
   ]
 })
 
