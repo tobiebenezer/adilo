@@ -21,6 +21,8 @@ import { ref } from 'vue'
 import TableItem from "@/components/showRecordingPage/TableItem.vue";
 
 const recordings = ref([1,2,3,4,5,5,6,54,4,]);
+
+
 </script>
 
 <style lang="less" scoped>
