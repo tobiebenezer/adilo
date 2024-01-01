@@ -63,7 +63,7 @@
         </template>
         <template #footer>
           <div class="card-footer">
-            <button class="btn btn-blue">Start Recording</button>
+            <button class="btn btn-blue" @click="startRecord">Start Recording</button>
           </div>
         </template>
       </TheModal>
@@ -76,6 +76,7 @@
 import { RouterLink } from 'vue-router'
 import TheModal from '../TheModal.vue'
 import { ref } from 'vue'
+import router from '@/router'
 
 const showModal = ref(true)
 const checked = ref ({
@@ -92,6 +93,10 @@ const toggleButton = (btnName) => {
 
 const toggleRadio = (btnName) => {
   checked.value[btnName] =  !checked.value[btnName];
+}
+
+const startRecord = () => {
+  router.push({ name: 'preview'});
 }
 
 </script>

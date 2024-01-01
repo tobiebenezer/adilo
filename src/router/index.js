@@ -13,9 +13,14 @@ const router = createRouter({
     },
     {
       path: '/recentrecording',
-      name: 'showRecoding',
+      name: 'showRecording',
       meta: { layout: TheSideBar },
       component: () => import('../views/ShowRecordingView.vue')
+    },
+    {
+      path: '/preview',
+      name: 'preview',
+      component: () => import('../views/LivePreviewView.vue')
     }
   ]
 })
