@@ -9,15 +9,16 @@
         <nav>
           <ul class="nav">
             <li class="nav-item">Projects</li>
-            <li class="nav-item" @click="toggleDropdown()">Tools & App</li>
+            <li class="nav-item" style="white-space: nowrap;" @click="toggleDropdown()">Tools & App</li>
 
             <ul v-if="showDropdown" class="dropdown">
-              <li class="dropdown-item" >Snapbyte Recoder</li>
+              <li class="dropdown-item"  >Snapbyte Recoder</li>
               <li class="dropdown-item">Audio Bounce</li>
               <li class="dropdown-item">Sugar Voice</li>
             </ul>
 
             <li class="nav-item">Channels</li>
+            <li class="nav-item">Contact</li>
             <li class="nav-item">Anaytics</li>
             <li class="nav-item">Settings</li>
           </ul>
@@ -96,7 +97,7 @@ const toggleDropdown = () => {
         display: block;
         position: absolute;
         top: 50px;
-        left: 25%;
+        left: 20%;
         background: #FFFFFF 0% 0% no-repeat padding-box;
         text-align: left;
         border: 1px solid #E2E5ED;

@@ -20,13 +20,17 @@
 @import '../../assets/base.less';
 
 main {
-  background: #ebf2f6;
-  height: 90vh;
-  width: 16rem;
-  position: sticky;
-  top: 0;
-  padding: 1.3rem;
-  flex: 1 1;
+  display:flex;
+  
+  
+  .sidebar {
+    position: sticky; 
+    background: #ebf2f6;
+    // height: 90vh;
+    width: 16rem;
+    top: 0;
+    padding: 1.3rem;
+  
   border-right:solid 2px gray ;
 
   li {
@@ -43,5 +47,12 @@ main {
       border-radius: 10px;
     }
   }
+  }
+  
+  .content {
+    padding:0.6rem 0.6rem 0.6rem 3rem; 
+    width: 80vw;    
+  }
+ 
 }
 </style>
