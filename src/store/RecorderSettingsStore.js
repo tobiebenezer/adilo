@@ -39,7 +39,7 @@ export const useRecordSettings = defineStore('recordSettings', {
         let stream;
 
         if (this.screen) {
-         let screeNstream = await navigator.mediaDevices.getDisplayMedia({
+         let screenStream = await navigator.mediaDevices.getDisplayMedia({
             video: {
               displaySurface: 'window',
               cursor: 'always'

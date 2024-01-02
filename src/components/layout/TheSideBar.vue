@@ -76,8 +76,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
 import TheModal from '../TheModal.vue'
-import { ref } from 'vue'
-import router from '@/router'
 import {useModalStore} from "@/store/ModalStore";
 import {useRecordSettings} from "@/store/RecorderSettingsStore"
 
@@ -111,6 +109,7 @@ main {
       list-style: none;
       padding: 0.7rem 1.2rem;
       margin: 0.4rem 0;
+      white-space: nowrap; 
 
       &:nth-child(1) {
         background: #e2e5ed 0% 0% no-repeat padding-box;
