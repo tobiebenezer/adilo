@@ -1,7 +1,7 @@
 <template>
   <tr >
     <td class="thumbnail">
-      <img :src="record.thumbnail" alt="" />
+      <img src="../../assets/recordings/thumbnaiil.png" alt="" />
     </td>
     <td class="data-title">
       <span class="title">{{ record.title }}</span>
