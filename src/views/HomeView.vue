@@ -1,7 +1,11 @@
 <script setup>
+import { useModalStore } from '@/store/ModalStore';
+
+const modalStore = useModalStore();
+
 </script>
 
-<template>
+<template v-slot="toggleModal">
   <main>
     
     <section class="section1">
@@ -14,8 +18,8 @@
         <span>follower and customers.</span>
       </div>
       <div>
-        <button class="btn btn-red">Start Recording</button> 
-        <button class="btn btn-blue">New Request</button>
+        <button class="btn btn-red" @click="modalStore.toggleModal()">  <font-awesome-icon :icon="['fas', 'circle']" style="padding-right: 0.3rem;" /> Start Recording</button>
+         <button class="btn btn-blue"> <font-awesome-icon :icon="['fas', 'video']" style="padding-right: 0.3rem;" /> New Request</button>
       </div>
     </section>
     <section class="section2">

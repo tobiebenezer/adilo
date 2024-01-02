@@ -9,7 +9,7 @@
         <th>last Modified</th>
         <th class="action"></th>
       </thead>
-      <tbody v-for="record in recordings">
+      <tbody v-for="record in recordingStore.recordings">
         <TableItem key="item" :record="record" />
       </tbody>
     </table>
@@ -17,10 +17,12 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import TableItem from "@/components/showRecordingPage/TableItem.vue";
+import {useRecordings} from "@/store/RecordingsStore"
 
-const recordings = ref([1,2,3,4,5,5,6,54,4,]);
+const recordingStore = useRecordings();
+
+// const recordings = ref([1,2,3,4,5,5,6,54,4,]);
 
 
 </script>

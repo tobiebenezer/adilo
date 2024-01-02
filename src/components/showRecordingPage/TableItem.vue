@@ -1,23 +1,24 @@
 <template>
   <tr >
     <td class="thumbnail">
-      <img src="../../assets/recordings/thumbnaiil.png" alt="" />
+      <img :src="record.thumbnail" alt="" />
     </td>
     <td class="data-title">
-      <span class="title">Getting it right first time</span>
+      <span class="title">{{ record.title }}</span>
       <span class="description">
-        the vdeo description is shown here <br />
-        if the user has added it
+        {{ record.description }}
       </span>
     </td>
-    <td>324</td>
-    <td>923kb</td>
-    <td>3 <i class="mdi mdi-application-parentheses-outline:"></i> ago</td>
-    <td class="action">...</td>
+    <td>{{ record.view }}</td>
+    <td>{{ record.size }}</td>
+    <td>{{ record.updatedAt }}</td>
+    <td class="action">{{ record.action }}</td>
   </tr>
 </template>
 
+
 <script setup>
+
 
 const props = defineProps({
   record: Object

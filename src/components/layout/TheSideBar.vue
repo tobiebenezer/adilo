@@ -4,35 +4,36 @@
     <div class="sidebar">
       <ul>
         <li>
+          <font-awesome-icon :icon="['fas', 'film']" />
           <RouterLink to="/recentrecording">
-            <span>My Recodings</span>
+            <span>  My Recodings</span>
           </RouterLink>
         </li>
-        <li>Request</li>
+        <li> <font-awesome-icon :icon="['fas', 'share-nodes']" /> Request</li>
       </ul>
     </div>
     <div class="content">
       <div class="top">
-        <RouterLink to="/recentrecording">
-          <span>Snapbyte My Recodings</span>
-        </RouterLink>
+        
+          <span class="breadcrumb">Snapbyte  <font-awesome-icon :icon="['fas', 'chevron-right']"  /> <RouterLink to="/recentrecording"> My Recodings</RouterLink> </span>
+        
         <div class="title">
           <div class="record">
-            <h4>Total recordings 0</h4>
+            My Recording <span class="num">25</span>
           </div>
           <div>
-            <button class="btn btn-outline">By Date</button>
-            <button class="btn btn-outline">Add Filter</button>
-            <button class="btn btn-blue">New Request</button>
-            <button class="btn btn-red" @click="toggleModal()">Start Recording</button>
+            <button class="btn btn-outline"><font-awesome-icon :icon="['fas', 'arrow-down-short-wide']" style="padding-right: 0.3rem;" /> By Date</button>
+            <button class="btn btn-outline"> <font-awesome-icon :icon="['fas', 'filter']" style="padding-right: 0.3rem;" /> Add Filter</button>
+            <button class="btn btn-blue"> <font-awesome-icon :icon="['fas', 'video']" style="padding-right: 0.3rem;" /> New Request</button>
+            <button class="btn btn-red" @click="modalStore.toggleModal()">  <font-awesome-icon :icon="['fas', 'circle']" style="padding-right: 0.3rem;" /> Start Recording</button>
           </div>
         </div>
       </div>
-      <TheModal :show="showModal" @toggleModal="toggleModal()">
+      <TheModal :show="modalStore.showModal">
         <template #header>
           <div class="header">
             <h4>New Recording</h4>
-            <span @click="toggleModal()"> X </span>
+            <span @click="modalStore.toggleModal()"> X </span>
           </div>
         </template>
         <template #body>
@@ -47,27 +48,27 @@
             </div>
             <div class="toggler">
               <span class="toggler-title">Record Screen</span>
-              <span @click="toggleRadio('screen')" :class="[toggleButton('screen')]"><span></span></span>
+              <span @click="recordSettings.toggleRadio('screen')" :class="[recordSettings.toggleButton('screen')]"><span></span></span>
             </div>
 
             <div class="toggler">
               <span class="toggler-title">Record Camera</span>
-              <span @click="toggleRadio('camera')" :class="[toggleButton('camera')]"><span></span></span>
+              <span @click="recordSettings.toggleRadio('camera')" :class="[recordSettings.toggleButton('camera')]"><span></span></span>
             </div>
 
             <div class="toggler">
               <span class="toggler-title">Record mic</span>
-              <span @click="toggleRadio('mic')" :class="toggleButton('mic')"><span></span></span>
+              <span @click="recordSettings.toggleRadio('mic')" :class="recordSettings.toggleButton('mic')"><span></span></span>
             </div>
           </div>
         </template>
         <template #footer>
           <div class="card-footer">
-            <button class="btn btn-blue" @click="startRecord">Start Recording</button>
+            <button class="btn btn-blue" @click="recordSettings.startRecord()">Start Recording</button>
           </div>
         </template>
       </TheModal>
-      <slot></slot>
+      <slot :toggleModal="toggleModal" ></slot>
     </div>
   </main>
 </template>
@@ -77,33 +78,18 @@ import { RouterLink } from 'vue-router'
 import TheModal from '../TheModal.vue'
 import { ref } from 'vue'
 import router from '@/router'
+import {useModalStore} from "@/store/ModalStore";
+import {useRecordSettings} from "@/store/RecorderSettingsStore"
 
-const showModal = ref(true)
-const checked = ref ({
-  screen:true, camera:true, mic:false
-})
+const modalStore= useModalStore();
+const recordSettings = useRecordSettings();
 
-const toggleModal = () => {
-  showModal.value = !showModal.value
-}
-
-const toggleButton = (btnName) => {
-  return checked.value[btnName] ? "toggler-button" :"toggler-button-off" ;
-} 
-
-const toggleRadio = (btnName) => {
-  checked.value[btnName] =  !checked.value[btnName];
-}
-
-const startRecord = () => {
-  router.push({ name: 'preview'});
-}
 
 </script>
 
 <style lang="less" scoped>
 @import '../../assets/base.less';
-
+@textcolor:#637C8E;
 main {
   display: flex;
 
@@ -114,6 +100,7 @@ main {
     width: 16rem;
     top: 0;
     padding: 1.3rem;
+    color:#21455E;
 
     border-right: solid 2px gray;
 
@@ -131,6 +118,10 @@ main {
         border-radius: 10px;
       }
     }
+  }
+
+  .num{
+    color:@textcolor;
   }
 
   .header {
@@ -179,8 +170,10 @@ main {
     width: 80vw;
     .top {
       margin-left: 1rem;
-      span {
+      .breadcrumb {
         margin-left: 12.5rem;
+        color: @textcolor;
+        font-size:12px;
       }
 
       .record {

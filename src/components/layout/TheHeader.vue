@@ -2,17 +2,28 @@
   <header>
     <div class="wrapper">
       <div class="logo">
-        <img src="@/assets/header/logo.png" />
+        <li class="dropdown-item">
+          <RouterLink to="/">
+            <img src="@/assets/header/logo.png" />
+          </RouterLink>
+        </li>
       </div>
 
       <div>
         <nav>
           <ul class="nav">
             <li class="nav-item">Projects</li>
-            <li class="nav-item" style="white-space: nowrap;" @click="toggleDropdown()">Tools & App</li>
+            <li class="nav-item active" style="white-space: nowrap" @click="toggleDropdown()">
+              Tools & App
+              <font-awesome-icon :icon="['fas', 'chevron-down']" />
+            </li>
 
             <ul v-if="showDropdown" class="dropdown">
-              <li class="dropdown-item"  >Snapbyte Recoder</li>
+              <li class="dropdown-item">
+                <RouterLink to="/recentrecording">
+                  <span>Snapbyte Recoder</span>
+                </RouterLink>
+              </li>
               <li class="dropdown-item">Audio Bounce</li>
               <li class="dropdown-item">Sugar Voice</li>
             </ul>
@@ -45,14 +56,13 @@
 
 
 <script setup >
-import {ref} from "vue"
+import { ref } from 'vue'
 
-let showDropdown = ref(false);
+let showDropdown = ref(false)
 
 const toggleDropdown = () => {
-  showDropdown.value = !showDropdown.value;
+  showDropdown.value = !showDropdown.value
 }
-
 </script>
 
 <style lang="less" scoped>
@@ -62,7 +72,7 @@ const toggleDropdown = () => {
   .dflex-center();
   font-size: 14px;
   color: #707070;
-  border: 1px solid #E2E5ED;
+  border: 1px solid #e2e5ed;
   width: 100vw;
   justify-content: space-between;
   padding: 1.7rem 2rem;
@@ -91,45 +101,52 @@ const toggleDropdown = () => {
         list-style: none;
         padding: 0.7rem 1.2rem;
         margin: 0.4rem 0;
-      }    
-        
-        .dropdown {
+      }
+      .active {
+        border-top: solid 3px #0dabd8;
+        color: #21455e;
+      }
+      .dropdown {
         display: block;
         position: absolute;
         top: 50px;
         left: 20%;
-        background: #FFFFFF 0% 0% no-repeat padding-box;
+        background: #ffffff 0% 0% no-repeat padding-box;
         text-align: left;
-        border: 1px solid #E2E5ED;
-        box-shadow: 0px 3px 24px #0000001A;
+        border: 1px solid #e2e5ed;
+        box-shadow: 0px 3px 24px #0000001a;
         border-radius: 8px;
-       
+
         .dropdown-item {
-          border-bottom: 1px solid #E2E5ED;
+          border-bottom: 1px solid #e2e5ed;
           margin: 0;
           padding: 0.7rem 1.2rem;
+
+          a:visited {
+            text-decoration: none;
+            color: #707070;
+          }
         }
 
         .dropdown:last-child {
           border: none;
         }
       }
-      
     }
   }
 
   .help {
     .dflex-center();
-    gap:1rem;
+    gap: 1rem;
     div:nth-of-type(1) {
       padding: 0.7rem;
-      font-size:14px;
+      font-size: 14px;
       border-right: solid 2px rgb(204, 204, 204);
     }
-    
+
     div {
       .dflex-center();
-      font-size:11px;
+      font-size: 11px;
     }
   }
 

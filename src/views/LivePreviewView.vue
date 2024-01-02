@@ -1,18 +1,31 @@
 <template>
   <section>
     <div class="title">
+      <font-awesome-icon :icon="['fas', 'record-vinyl']" style="color: #ec0909; margin-right: 0.3rem;" />
       <span>Live Preview</span>
     </div>
     <div class="preview">
-      <video src=""></video>
+      <video :style="{height:(recordSettings.screen || recordSettings.camera)?'':'60vh'}" id="previewVideo" ></video>
     </div>
     <div>
-      <button class="btn">Start recording</button>
+      <button class="btn" @click="recordSettings.startVRecord('previewVideo')">Start recording</button>
     </div>
   </section>
 </template>
 
-<script></script>
+<script setup>
+import { useRecordSettings } from '@/store/RecorderSettingsStore';
+import { onMounted } from 'vue'
+const recordSettings = useRecordSettings();
+
+onMounted(() => {
+  recordSettings.previewRecord('previewVideo');
+  console.log(`the component is now mounted.`)
+})
+
+
+
+</script>
 
 <style lang="less" scoped>
 
@@ -36,7 +49,7 @@ section {
     background: #21455e 0% 0% no-repeat padding-box;
     border-radius: 8px;
     video {
-        height: 60vh;
+        max-height: 70vh;
         width:65vw;
     }
   }

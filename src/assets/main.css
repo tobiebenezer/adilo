@@ -15,6 +15,11 @@ a,
   padding: 3px;
 }
 
+a:visited { 
+ text-decoration: none; 
+ color: orange; 
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
